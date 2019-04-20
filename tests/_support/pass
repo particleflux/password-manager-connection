@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+$status = 0;
+$output = '';
+$passwords = [
+    'foo' => "my-secret-password\nusername: my-user",
+    'bar' => 'my-"other"-password',
+    'baz' => "wtf-pw\nwtf: wtf-user",
+];
+$mockFile = dirname(__DIR__, 2) . '/build/mock_result';
+
+if ($argc !== 3) {
+    die("bad invocation\n");
+}
+
+if (file_exists($mockFile)) {
+    $content = file($mockFile, FILE_IGNORE_NEW_LINES);
+    $status = array_shift($content);
+    $output = implode("\n", $content);
+} else {
+    $status = (int) !isset($passwords[$argv[2]]);
+    $output = $passwords[$argv[2]] ?? 'pass does not exist';
+}
+
+echo $output . PHP_EOL;
+exit($status);

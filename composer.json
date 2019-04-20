@@ -1,0 +1,32 @@
+{
+    "name": "particleflux/password-manager-connection",
+    "type": "library",
+    "description": "Connect to an external password/secret manager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefan Linke",
+            "email": "particleflux@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1",
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpcompatibility/php-compatibility": "^9.1",
+        "sensiolabs/security-checker": "^5.0",
+        "phpmd/phpmd": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "particleflux\\PMConnection\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "particleflux\\PMConnection\\tests\\": "tests/"
+        }
+    }
+}
