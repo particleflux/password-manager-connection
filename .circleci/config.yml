@@ -1,0 +1,63 @@
+version: 2
+jobs:
+  build:
+    shell: /bin/bash --login
+    docker:
+      - image: circleci/php:7.3-cli
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dep-{{ .Branch }}-
+            - v1-dep-master-
+            - v1-dep-
+      - run:
+          name: Install dependencies
+          command: |
+            composer install \
+              --no-interaction \
+              --no-suggest \
+              --no-progress \
+              --prefer-dist \
+              --optimize-autoloader
+      - run:
+          name: Install CI tools
+          command: |
+            if [[ ! -f "/tmp/cc-test-reporter" ]]; then
+              curl -sL https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
+            fi
+            chmod +x /tmp/cc-test-reporter
+      # Save dependency cache
+      - save_cache:
+          key: v1-dep-{{ .Branch }}-{{ epoch }}
+          paths:
+            - ~/.composer/cache
+            - /tmp/cc-test-reporter
+
+      - run:
+          name: Check for known dependency vulnerabilities
+          command: |
+            commitMsg="$(git log --format=%B -n 1 $CIRCLE_SHA1)"
+            if ! echo "$commitMsg" | grep '\[skip security\]' ; then
+              $(composer config bin-dir)/security-checker security:check
+            else
+              echo -e "\e[33mWARNING: Skipping security test on user request!\e[0m"
+            fi
+
+      - run:
+          name: Check Codestyle & language compatibility
+          command: |
+            # fail only on errors, not on warnings
+            vendor/bin/phpcs -s --error-severity=1 --warning-severity=0
+
+      - run:
+          name: Run Tests
+          command: |
+            /tmp/cc-test-reporter before-build
+            vendor/bin/phpunit
+            /tmp/cc-test-reporter after-build --exit-code $?
+
+      - store_artifacts:
+          path: build
