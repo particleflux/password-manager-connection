@@ -6,9 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2020-01-22
+### Fixed
+- Remove unnecessary files from packagist
+
 ## [1.0.0] - 2019-04-20
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/particleflux/password-manager-connection/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/particleflux/password-manager-connection/releases/tag/v1.0.0
+[Unreleased]: https://github.com/particleflux/password-manager-connection/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/particleflux/password-manager-connection/releases/tag/1.0.0...1.0.1
+[1.0.0]: https://github.com/particleflux/password-manager-connection/releases/tag/1.0.0
