@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2020-12-02
+### Changed
+- Dropped support for PHP 7.1
+- Add support for PHP 8.0
+
 ## [1.0.1] - 2020-01-22
 ### Fixed
 - Remove unnecessary files from packagist
@@ -14,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/particleflux/password-manager-connection/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/particleflux/password-manager-connection/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/particleflux/password-manager-connection/releases/tag/2.0.0
 [1.0.1]: https://github.com/particleflux/password-manager-connection/releases/tag/1.0.1
 [1.0.0]: https://github.com/particleflux/password-manager-connection/releases/tag/1.0.0
