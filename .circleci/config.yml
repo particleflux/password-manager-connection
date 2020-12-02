@@ -1,12 +1,23 @@
-version: 2
+version: 2.1
 jobs:
   build:
     shell: /bin/bash --login
     docker:
-      - image: circleci/php:7.3-cli
+      - image: cimg/php:<< parameters.version >>
+
+    parameters:
+      version:
+        type: string
+        default: "7.3"
 
     steps:
       - checkout
+
+      - run:
+          name: Install xdebug for coverage
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y php<< parameters.version>>-xdebug
 
       - restore_cache:
           keys:
@@ -59,7 +70,7 @@ jobs:
             # required for xdebug >=3.0.0
             export XDEBUG_MODE=coverage
             vendor/bin/phpunit
-            /tmp/cc-test-reporter after-build --exit-code $?
+            /tmp/cc-test-reporter after-build --exit-code $? || /bin/true
 
       - store_artifacts:
           path: build
@@ -68,7 +79,10 @@ workflows:
   version: 2
   commit:
     jobs:
-      - build
+      - build:
+          matrix:
+            parameters:
+              version: ["7.2", "7.3", "7.4", "8.0"]
   nightly:
     triggers:
       - schedule:
@@ -78,4 +92,7 @@ workflows:
               only:
                 - master
     jobs:
-      - build
+      - build:
+          matrix:
+            parameters:
+              version: ["7.2", "7.3", "7.4", "8.0" ]
