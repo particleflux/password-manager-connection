@@ -16,9 +16,9 @@ class PassConnection implements PMConnectionInterface
     private const PASS_EXECUTABLE = 'pass';
 
     /** @var string Prefix to apply to all passwords (subfolder) */
-    private $prefix = '';
+    private string $prefix = '';
 
-    private $userAttribute = 'username';
+    private string $userAttribute = 'username';
 
     /**
      * PassConnection constructor
