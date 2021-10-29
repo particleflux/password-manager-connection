@@ -23,10 +23,10 @@ class PassConnection implements PMConnectionInterface
     /**
      * PassConnection constructor
      *
-     * @param array $config Configuration options
+     * @param array<string, mixed> $config Configuration options
      * @throws InvalidConfigException
      */
-    public function __construct($config = [])
+    public function __construct(array $config = [])
     {
         foreach ($config as $name => $value) {
             if (!property_exists($this, $name)) {
@@ -73,6 +73,11 @@ class PassConnection implements PMConnectionInterface
         throw new ConnectionFailedException("Attribute '$attribute' does not exist");
     }
 
+    /**
+     * @param string $account
+     * @return string[]
+     * @throws ConnectionFailedException
+     */
     private function execute(string $account) : array
     {
         $output = [];
