@@ -71,6 +71,11 @@ jobs:
             vendor/bin/phpcs -s --error-severity=1 --warning-severity=0
 
       - run:
+          name: Static analysis
+          command: |
+            vendor/bin/phpstan --no-progress
+
+      - run:
           name: Run Tests
           command: |
             /tmp/cc-test-reporter before-build
