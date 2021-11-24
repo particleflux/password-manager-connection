@@ -19,7 +19,7 @@ jobs:
           name: Install xdebug for coverage
           command: |
             sudo apt-get update
-            sudo apt-get install -y php<< parameters.version>>-xdebug
+            sudo apt-get install -y php-xdebug
 
       - restore_cache:
           keys:
