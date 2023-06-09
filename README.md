@@ -15,7 +15,7 @@ composer require particleflux/password-manager-connection
 
 ## Requirements
 
-* minimum PHP 7.4
+* minimum PHP 8.0
 
 ## Usage
 
