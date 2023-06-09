@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace particleflux\PMConnection\tests;
 
@@ -8,7 +9,7 @@ use particleflux\PMConnection\PassConnection;
 
 class PassConnectionTest extends TestCase
 {
-    public function testGetPassword()
+    public function testGetPassword(): void
     {
         $connection = new PassConnection();
         $password = $connection->getPassword('foo');
@@ -21,7 +22,7 @@ class PassConnectionTest extends TestCase
         $connection->getPassword('non-existing');
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $connection = new PassConnection();
         $user = $connection->getUser('foo');
@@ -31,7 +32,7 @@ class PassConnectionTest extends TestCase
         $connection->getUser('bar');
     }
 
-    public function testGetUserNonStandard()
+    public function testGetUserNonStandard(): void
     {
         $connection = new PassConnection([
             'userAttribute' => 'wtf',
@@ -43,7 +44,7 @@ class PassConnectionTest extends TestCase
         $connection->getUser('foo');
     }
 
-    public function testBadConfig()
+    public function testBadConfig(): void
     {
         $this->expectException(InvalidConfigException::class);
         new PassConnection([

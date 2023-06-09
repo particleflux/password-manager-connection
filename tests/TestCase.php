@@ -1,14 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace particleflux\PMConnection\tests;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    protected $oldPath;
+    protected string $oldPath;
 
     public function setUp() : void
     {
-        $this->oldPath = getenv('PATH');
+        $path = getenv('PATH');
+        $this->oldPath = $path !== false ? $path : '';
         $supportDir = __DIR__ . '/_support';
         putenv("PATH=$supportDir:{$this->oldPath}");
     }
