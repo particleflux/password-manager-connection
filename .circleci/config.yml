@@ -18,8 +18,8 @@ jobs:
       - run:
           name: Install xdebug for coverage
           command: |
-            sudo apt-get update
-            sudo apt-get install -y php-xdebug
+            sudo -E install-php-extensions xdebug
+            sudo docker-php-ext-enable xdebug
 
       - restore_cache:
           keys:
