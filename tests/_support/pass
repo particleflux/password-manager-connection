@@ -4,9 +4,10 @@
 $status = 0;
 $output = '';
 $passwords = [
-    'foo' => "my-secret-password\nusername: my-user",
-    'bar' => 'my-"other"-password',
-    'baz' => "wtf-pw\nwtf: wtf-user",
+    'foo'              => "my-secret-password\nusername: my-user",
+    'bar'              => 'my-"other"-password',
+    'baz'              => "wtf-pw\nwtf: wtf-user",
+    'a/prefixed/entry' => "pw-in-a-prefix",
 ];
 $mockFile = dirname(__DIR__, 2) . '/build/mock_result';
 

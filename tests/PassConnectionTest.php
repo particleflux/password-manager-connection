@@ -22,6 +22,17 @@ class PassConnectionTest extends TestCase
         $connection->getPassword('non-existing');
     }
 
+    public function testGetPasswordPrefixed(): void
+    {
+        $connection = new PassConnection(['prefix' => 'a/prefixed/']);
+        $password = $connection->getPassword('entry');
+        $this->assertEquals('pw-in-a-prefix', $password);
+
+        // not existing in prefix
+        $this->expectException(ConnectionFailedException::class);
+        $connection->getPassword('foo');
+    }
+
     public function testGetUser(): void
     {
         $connection = new PassConnection();
