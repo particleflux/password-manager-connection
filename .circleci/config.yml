@@ -31,7 +31,6 @@ jobs:
           command: |
             composer install \
               --no-interaction \
-              --no-suggest \
               --no-progress \
               --prefer-dist \
               --optimize-autoloader
