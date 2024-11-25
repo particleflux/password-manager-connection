@@ -86,7 +86,7 @@ workflows:
       - build:
           matrix:
             parameters:
-              version: ["8.1", "8.2", "8.3"]
+              version: ["8.1", "8.2", "8.3", "8.4"]
   nightly:
     triggers:
       - schedule:
@@ -99,4 +99,4 @@ workflows:
       - build:
           matrix:
             parameters:
-              version: ["8.1", "8.2", "8.3"]
+              version: ["8.1", "8.2", "8.3", "8.4"]
