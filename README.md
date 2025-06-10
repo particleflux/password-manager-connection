@@ -1,6 +1,6 @@
 # password-manager-connection
 
-![Packagist Version](https://img.shields.io/packagist/v/particleflux/password-manager-connection.svg)
+[![Packagist Version](https://img.shields.io/packagist/v/particleflux/password-manager-connection.svg)](https://packagist.org/packages/particleflux/password-manager-connection)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/particleflux/password-manager-connection/php)
 [![CircleCI](https://circleci.com/gh/particleflux/password-manager-connection.svg?style=shield)](https://circleci.com/gh/particleflux/password-manager-connection)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c19ca8749037db10f8bf/maintainability)](https://codeclimate.com/github/particleflux/password-manager-connection/maintainability)
